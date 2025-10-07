@@ -259,22 +259,23 @@ BASE_HTML = """
     .animated-features {
       display: flex;
       flex-wrap: wrap;
-      gap: 0.5rem;
+      gap: 2rem; /* increased gap between domain buttons */
       justify-content: center;
-      margin-top: 2rem;
+      margin-top: 3rem; /* more spacing from header */
     }
 
-    .animated-features .feature-box {
+    .feature-box {
       background: rgba(0, 255, 255, 0.2);
-      padding: 1rem 2rem;
+      min-width: 150px; /* increase button width for better readability */
+      padding: 1.2rem 2rem; /* more padding inside buttons */
       border-radius: 12px;
       font-weight: bold;
-      min-width: 120px;
       text-align: center;
       cursor: pointer;
       transition: transform 0.3s, background 0.3s, box-shadow 0.3s;
       user-select: none;
       box-shadow: 0 0 5px rgba(0, 255, 255, 0.3);
+      font-size: 1.2rem; /* larger text for desktop */
     }
 
     .animated-features .feature-box:hover {
@@ -321,12 +322,12 @@ BASE_HTML = """
     }
 
     .domain-details {
-      margin-top: 1rem;
+      margin-top: 3rem; /* increase spacing from floating buttons */
       background: rgba(0, 255, 255, 0.15);
-      padding: 1rem 2rem;
+      padding: 1.5rem 2rem;
       border-radius: 10px;
       text-align: left;
-      max-width: 600px;
+      max-width: 700px; /* allow more width for content */
       margin-left: auto;
       margin-right: auto;
       box-shadow: 0 0 10px rgba(0, 255, 255, 0.3);
@@ -334,6 +335,7 @@ BASE_HTML = """
       opacity: 0;
       transform: translateY(10px);
       display: none;
+      font-size: 1.15rem; /* slightly larger text */
     }
 
     .domain-details.active {
@@ -560,84 +562,83 @@ BASE_HTML = """
     }
 
     @media (max-width: 480px) {
+      /* Header & Logo */
       header img {
-        height: 100px;
-        top: 24px;
-        left: 12px;
+        height: 140px;
+        top: 25px;
+        left: 15px;
       }
-
       h1.animated-text {
-        font-size: 2.5rem;
-        margin-top: 100px;
+        font-size: 3.2rem;
+        margin-top: 160px;
       }
 
-      section {
-        width: 99%;
-        padding: 0.5rem;
-        margin: 0.5rem auto;
+      /* Navbar links */
+      nav a {
+        font-size: 1.8rem;
+        padding: 1.2rem 2rem;
+        margin: 0.8rem 0.4rem;
+        display: block;
       }
 
-      /* Enhanced responsiveness for team, events, and features */
+      /* Floating domain boxes */
+      .animated-features {
+        flex-direction: column;
+        gap: 2rem;
+        margin-top: 3.5rem;
+        align-items: center;
+      }
+      .feature-box {
+        width: 95%;
+        font-size: 1.6rem;
+        padding: 1.2rem 1.8rem;
+      }
+
+      /* Domain info spacing */
+      .domain-details {
+        margin-top: 2.5rem;
+        padding: 1.2rem 1.8rem;
+        font-size: 1.15rem;
+      }
+
+      /* Team and Event cards */
       .animated-team .card, .animated-events .card {
-        width: 90%;
+        width: 95%;
         height: auto;
-        margin: 0.8rem auto;
+        padding: 1.5rem;
+        margin-bottom: 1.5rem;
+      }
+
+      /* Sections & inputs/buttons */
+      section {
+        width: 98%;
+        padding: 1.2rem;
+      }
+      input, button, select {
+        width: 95%;
+        font-size: 1.1rem;
+      }
+
+      /* Additional tweaks for headings */
+      h2, h3 {
+        font-size: 1.4rem;
+      }
+      .team {
+        grid-template-columns: repeat(1, 1fr);
+        gap: 1rem;
       }
       .animated-team, .animated-events {
         flex-direction: column;
         align-items: center;
         gap: 1rem;
       }
-      .team {
-        grid-template-columns: repeat(1, 1fr);
-        gap: 1rem;
-      }
-      .animated-features {
-        margin-top: 2.8rem;
-        gap: 1rem;
-      }
-      .feature-box {
-        width: 90%;
-      }
-      h2, h3 {
-        font-size: 1.4rem;
-      }
-
-      .animated-features .feature-box {
-        min-width: 95%;
-        padding: 0.7rem 0.9rem;
-        font-size: 1.05rem;
-      }
-
-      nav a {
-        display: inline-block;
-        margin: 0.7rem 0.25rem;
-        font-size: 1.2rem;
-        padding: 0.7rem 1.2rem;
-        line-height: 1.6;
-      }
-
-      .domain-details {
-        font-size: 1rem;
-        padding: 0.7rem 1.1rem;
-        margin-bottom: 1.5rem;
-      }
-
       .modal-content {
         width: 98%;
         padding: 0.6rem;
         margin: 12% auto;
       }
-
       .modal h2 {
         font-size: 1.5rem;
-      }
-
-      input,
-      button,
-      select {
-        max-width: 95%;
-        width: 95%;
       }
     }
   </style>
@@ -646,9 +647,9 @@ BASE_HTML = """
 <body>
   <header>
     <img src="/static/logo.jpg" alt="Logo"
-      style="height:180px; position:absolute; top:40px; left:30px; filter: drop-shadow(0 0 8px cyan); transition: transform 0.3s ease;">
+      style="filter: drop-shadow(0 0 8px cyan); transition: transform 0.3s ease; position:absolute; top:40px; left:30px;">
     <div id="robot-animation" style="width:150px; height:150px; margin:0 auto;"></div>
-    <h1 class="animated-text" style="font-size:4rem; font-weight:bold; text-align:center; margin:0;">
+    <h1 class="animated-text" style="font-weight:bold; text-align:center; margin:0;">
       AILYTICS CLUB
     </h1>
     <span style="font-size:1rem; font-weight:normal; color:#00ffff; display:block; text-align:center; margin:0;">
@@ -1021,7 +1022,7 @@ async def team():
         <div style="margin-bottom:0.7rem;">
           <strong>Arshiya</strong><br>Research Head
         </div>
-        <img src="/static/images/arshiya.png" alt="Arshiya" style="width:120px; height:120px; border-radius:50%; object-fit:cover; margin-top:0.5rem; margin-bottom:0.6rem;">
+        <img src="/static/images/Arshiya.png" alt="Arshiya" style="width:120px; height:120px; max-width:100%; height:auto; border-radius:50%; object-fit:cover; margin-top:0.5rem; margin-bottom:0.6rem;">
       </div>
       <div class="card-social" style="text-align:center;">
         <a href="#" target="_blank"><i class="fab fa-linkedin"></i></a>
@@ -1033,7 +1034,7 @@ async def team():
         <div style="margin-bottom:0.7rem;">
           <strong>Rajveer</strong><br>Workshop Lead
         </div>
-        <img src="/static/images/rajveer.png" alt="Rajveer" style="width:120px; height:120px; border-radius:50%; object-fit:cover; margin-top:0.5rem; margin-bottom:0.6rem;">
+        <img src="/static/images/Rajveer.png" alt="Rajveer" style="width:120px; height:120px; max-width:100%; height:auto; border-radius:50%; object-fit:cover; margin-top:0.5rem; margin-bottom:0.6rem;">
       </div>
       <div class="card-social" style="text-align:center;">
         <a href="#" target="_blank"><i class="fab fa-linkedin"></i></a>
@@ -1057,7 +1058,7 @@ async def team():
         <div style="margin-bottom:0.7rem;">
           <strong>Trisha</strong><br>Marketing Lead
         </div>
-        <img src="/static/images/trisha.png" alt="Trisha" style="width:120px; height:120px; border-radius:50%; object-fit:cover; margin-top:0.5rem; margin-bottom:0.6rem;">
+        <img src="/static/images/Trisha.png" alt="Trisha" style="width:120px; height:120px; max-width:100%; height:auto; border-radius:50%; object-fit:cover; margin-top:0.5rem; margin-bottom:0.6rem;">
       </div>
       <div class="card-social" style="text-align:center;">
         <a href="#" target="_blank"><i class="fab fa-linkedin"></i></a>
@@ -1138,6 +1139,9 @@ async def login_form():
   <input type="text" name="username" placeholder="Enter Username" required>
   <input type="password" name="password" placeholder="Enter Password" required>
   <button type="submit">Login</button>
+  <p style="font-size:0.85rem; color:#00ffff; margin-top:0.5rem;">
+    For any queries, contact: <a href="mailto:ciieaimicommunity@gmail.com" style="color:#00ffff;">ciieaimicommunity@gmail.com</a>
+  </p>
 </form>
 """, path="/login")
 
@@ -1156,6 +1160,9 @@ async def signup_form():
   <input type="text" name="username" placeholder="Choose Username" required>
   <input type="password" name="password" placeholder="Choose Password" required>
   <button type="submit">Signup</button>
+  <p style="font-size:0.85rem; color:#00ffff; margin-top:0.5rem;">
+    For any queries, contact: <a href="mailto:ciieaimicommunity@gmail.com" style="color:#00ffff;">ciieaimicommunity@gmail.com</a>
+  </p>
 </form>
 """, path="/signup")
 
